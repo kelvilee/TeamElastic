@@ -24,6 +24,7 @@ client.on('loggedOn', () => {
     console.log('Successfully logged on.')
 });
 
+// sets cookies for trading
 client.on('webSession', (sessionid, cookies) => {
     manager.setCookies(cookies);
     community.setCookies(cookies);
@@ -52,6 +53,7 @@ function declineOffer(offer) {
 
 //client.setOption("promptSteamGuardCode", false);
 
+//handles incoming trades
 manager.on('newOffer', (offer) => {
     if (offer.partner.getSteamID64() === config.ownerID) {
         acceptOffer(offer);
