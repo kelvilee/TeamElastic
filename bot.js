@@ -50,7 +50,7 @@ function declineOffer(offer) {
     });
 }
 
-//client.setOption("promptSteamGuardCode", false);
+client.setOption("promptSteamGuardCode", false);
 
 manager.on('newOffer', (offer) => {
     if (offer.partner.getSteamID64() === config.ownerID) {

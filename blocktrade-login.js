@@ -1,3 +1,14 @@
+
+const Client = require('bitcoin-core');
+const client = new Client({ port: 8332 }, {password: "e"}, {username: "t"}, {host: "localhost"}); //maybe try 127.0.0.1 host
+
+client.getInfo().then((help) => {
+    response.write("hello johnny");
+    console.log(help);
+    response.write(help);
+
+});
+
 ////////////////Steam inventory api
 var steamUserInventory = require('steam-user-inventory');
 steamUserInventory('awtt').then(data => {
@@ -116,9 +127,9 @@ app.get('/', function(request, response) {
             JSON.stringify(request.user) || 'None');
         response.write('<form action="/auth/logout" method="post">');
         response.write('<input type="submit" value="Log Out"/></form>');
-        //var user = "76561198056352118"
+        var user = "76561198056352118"
         console.log("userSteamID in html is: " + userSteamId);
-        var user = userSteamId;
+       // var user = userSteamId;
         var game = "730/2/"
         //console.log("console" + steamUserInventory(user, game)[0]);
         var promise = steamUserInventory(user, game);
