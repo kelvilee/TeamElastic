@@ -108,17 +108,32 @@ app.post('/auth/logout', function(request, response) {
 //raw html to display the html page
 app.get('/', function(request, response) {
 
-    response.write('<!DOCTYPE html>')
+    response.write('<!DOCTYPE html>');
+    response.write('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">');
     //response.writeHead(200, {"Content-Type":"text/plain"})
    // response.write("hello world")
     if (request.user) {
-        response.write(request.session.passport &&
-            JSON.stringify(request.user) || 'None');
+        ////////////////////////////
+        ///////START OF HTML BODY///
+        ////////////////////////////
+        response.write('<div class="container">');
+
+        ////////////////////////////
+        //////////NAVBAR////////////
+        ////////////////////////////
+            response.write('<nav class="navbar navbar-dark bg-dark">')
+                response.write('<a class="navbar-brand" href="#">BlockTrade</a>')
+            response.write('</nav>')
+
+        ////////////////////////////
+        //////////LOGOUT BUTTON/////
+        ////////////////////////////
+        response.write(request.session.passport && JSON.stringify(request.user) || 'None');
         response.write('<form action="/auth/logout" method="post">');
-        response.write('<input type="submit" value="Log Out"/></form>');
-        //var user = "76561198056352118"
+        response.write('<input type="submit" value="Log Out" class="btn btn-primary"/></form>');
+        var user = "76561198056352118"
         console.log("userSteamID in html is: " + userSteamId);
-        var user = userSteamId;
+        //var user = userSteamId;
         var game = "730/2/"
         //console.log("console" + steamUserInventory(user, game)[0]);
         var promise = steamUserInventory(user, game);
@@ -128,14 +143,20 @@ app.get('/', function(request, response) {
             console.log(values[0]['image']);
             steam.getUserSummary(userSteamId).then(summary => {
                 response.write('<img src=\"' + summary["avatar"]["small"] + '\">');
-                response.write("hello " + summary["nickname"]);
+                response.write(summary["nickname"]);
                 
                 console.log(summary["nickname"]);
                 
             });
             response.write("your first item in your csgo inventory is: " + values[0]['name']);
-            console.log('image link: ' + '<img src=\"' + values[0]['image'] + '\">')
-            response.write('<img src=\"' + values[0]['image'] + '\">');
+            console.log('image link: ' + '<img class="img-thumbnail" src=\"' + values[0]['image'] + '\">')
+            response.write('<img src=\"' + values[0]['image'] + '\" class="img-thumbnail">');
+            response.write('<img src=\"' + values[1]['image'] + '\" class="img-thumbnail">');
+            response.write('<img src=\"' + values[2]['image'] + '\" class="img-thumbnail">');
+            response.write('<img src=\"' + values[3]['image'] + '\" class="img-thumbnail">');
+            response.write('<img src=\"' + values[4]['image'] + '\" class="img-thumbnail">');
+            response.write('<img src=\"' + values[5]['image'] + '\" class="img-thumbnail">');
+        response.write('</div>');
         })
 
   
