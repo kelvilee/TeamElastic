@@ -113,27 +113,54 @@ app.get('/', function(request, response) {
     //response.writeHead(200, {"Content-Type":"text/plain"})
    // response.write("hello world")
     if (request.user) {
-        ////////////////////////////
-        ///////START OF HTML BODY///
-        ////////////////////////////
-        response.write('<div class="container">');
 
         ////////////////////////////
         //////////NAVBAR////////////
         ////////////////////////////
-            response.write('<nav class="navbar navbar-dark bg-dark">')
-                response.write('<a class="navbar-brand" href="#">BlockTrade</a>')
-            response.write('</nav>')
+            response.write('<nav class="navbar navbar-inverse" style="background-color:darkblue">');
+                response.write('<div class="container-fluid">');
+                    response.write('<a class="navbar-brand" href="#">BLOCKTRADE</a>');
+                    response.write('<div class="navbar-header" style="color:white">');
+                        response.write('Your Bitcoin Address:<form style="color:black"><input type="text" size="32" placeholder="10101010101010101010101010101010" readonly></form>');
+                        response.write('<button style="color: transparent; background-color: transparent; border-color: transparent;  cursor: default;"></button>');
+                    response.write('</div>');
+                    response.write('<div class="navbar-header" id="myNavbar" style="color:white">');
+                        response.write('<ul class="nav navbar-nav navbar-right">');
+                            response.write('Enter/update your Bitcoin Address:<form style="color:black"><input size="32" type="text"></form>');
+                            response.write('<button style="color:black; width: 50%; ">Submit</button>');
+                            response.write('<form action="/auth/logout" method="post">');
+                            response.write('<input type="submit" value="Log Out" class="btn btn-primary"/></form>');
+                        response.write('</ul>');
+                    response.write('</div>');
+                response.write('</div>');
+            response.write('</nav>');
 
         ////////////////////////////
-        //////////LOGOUT BUTTON/////
+        //////////MODALS////////////
         ////////////////////////////
-        response.write(request.session.passport && JSON.stringify(request.user) || 'None');
-        response.write('<form action="/auth/logout" method="post">');
-        response.write('<input type="submit" value="Log Out" class="btn btn-primary"/></form>');
-        var user = "76561198056352118"
-        console.log("userSteamID in html is: " + userSteamId);
-        //var user = userSteamId;
+        response.write('<div class="modal fade" id="modalid">');
+            response.write('<div class="modal-dialog modal-dialog-centered">');
+                response.write('<div class="modal-content">');
+                    response.write('<div class="modal-header mx-auto">');
+                        response.write('<h3 id="modalHeaderID">Buy/Sell Item</h3>');
+                    response.write('</div>');
+                    response.write('<div class="modal-body col-6 mx-auto">');
+                        response.write('Modal test');
+                    response.write('</div>');
+                response.write('</div>');
+            response.write('</div>');
+        response.write('</div>');
+
+        ////////////////////////////
+        ///////START OF BODY////////
+        ////////////////////////////
+
+        //response.write(request.session.passport && JSON.stringify(request.user) || 'None');
+        // not really sure what this does
+        JSON.stringify(request.user);
+        //var user = "76561198056352118"
+        //console.log("userSteamID in html is: " + userSteamId);
+        var user = userSteamId;
         var game = "730/2/"
         //console.log("console" + steamUserInventory(user, game)[0]);
         var promise = steamUserInventory(user, game);
@@ -148,18 +175,73 @@ app.get('/', function(request, response) {
                 console.log(summary["nickname"]);
                 
             });
-            response.write("your first item in your csgo inventory is: " + values[0]['name']);
-            console.log('image link: ' + '<img class="img-thumbnail" src=\"' + values[0]['image'] + '\">')
-            response.write('<img src=\"' + values[0]['image'] + '\" class="img-thumbnail">');
-            response.write('<img src=\"' + values[1]['image'] + '\" class="img-thumbnail">');
-            response.write('<img src=\"' + values[2]['image'] + '\" class="img-thumbnail">');
-            response.write('<img src=\"' + values[3]['image'] + '\" class="img-thumbnail">');
-            response.write('<img src=\"' + values[4]['image'] + '\" class="img-thumbnail">');
-            response.write('<img src=\"' + values[5]['image'] + '\" class="img-thumbnail">');
+            
+            //response.write("your first item in your csgo inventory is: " + values[0]['name']);
+            //console.log('image link: ' + '<img class="img-thumbnail" src=\"' + values[0]['image'] + '\">')
+            response.write('<div class="container-fluid text-center">');  
+                response.write('<div class="row content">');
+                    response.write('<div class="col-sm-6 sidenav">');
+                        response.write('<div class="well">');
+                            response.write('<p>Your Items</p>');
+                        response.write('</div>');
+                        response.write('<div class="well">');
+                            response.write('<p>Div holding all item divs</p>');
+                                response.write('<div class="row">');
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="0" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[0]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[0]['name'] + '\"</span></div></a></div>');
+                                    const listen0 = new listen0();
+                                    listen0.once('newListener', (event, listener) => {
+                                        if (event === 'event') {
+                                            listen0.on('event', () => {
+                                                console.log("test")
+                                            })
+                                        }
+                                        });
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="1" onClick="updateModal(this.id)" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[1]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[1]['name'] + '\"</span></div></a></div>');
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="2" onClick="updateModal(this.id)" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[2]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[2]['name'] + '\"</span></div></a></div>');
+                                response.write('</div>');
+                                response.write('<div class="row">');
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="3" onClick="updateModal(this.id)" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[3]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[3]['name'] + '\"</span></div></a></div>');
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="4" onClick="updateModal(this.id)" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[4]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[4]['name'] + '\"</span></div></a></div>');
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="5" onClick="updateModal(this.id)" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[5]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[5]['name'] + '\"</span></div></a></div>');
+                                response.write('</div>');
+                                response.write('<div class="row">');
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="6" onClick="updateModal(this.id)" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[6]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[6]['name'] + '\"</span></div></a></div>');
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="7" onClick="updateModal(this.id)" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[7]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[7]['name'] + '\"</span></div></a></div>');
+                                    response.write('<div class="col-sm-4 cell modalButton"><a id="8" onClick="updateModal(this.id)" href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[8]['image'] + '\" class="img-thumbnail"><span id="span3" style="display: none;">\"' + values[8]['name'] + '\"</span></div></a></div>');
+                                response.write('</div>');
+                            response.write('</div>');
+                        response.write('</div>');
+                        response.write('<div class="col-sm-6 sidenav">');
+                            response.write('<div class="well">');
+                                response.write('<p>Available Items</p>');
+                            response.write('</div>');
+                            response.write('<div class="well">');
+                                response.write('<p>Div holding all item divs</p>');
+                            response.write('<div class="row">');
+                                response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[9]['image'] + '\" class="img-thumbnail"></div></a></div>');
+                                response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[10]['image'] + '\" class="img-thumbnail"></div></a></div>');
+                                response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[11]['image'] + '\" class="img-thumbnail"></div></a></div>');
+                            response.write('</div>');
+            response.write('<div class="row">');
+            response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[12]['image'] + '\" class="img-thumbnail"></div></a></div>');
+            response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[13]['image'] + '\" class="img-thumbnail"></div></a></div>');
+            response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[14]['image'] + '\" class="img-thumbnail"></div></a></div>');
+            response.write('</div>');
+            response.write('<div class="row">');
+            response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[15]['image'] + '\" class="img-thumbnail"></div></a></div>');
+            response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[16]['image'] + '\" class="img-thumbnail"></div></a></div>');
+            response.write('<div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div><img src=\"' + values[17]['image'] + '\" class="img-thumbnail"></div></a></div>');
+            response.write('</div>');
+            response.write('</div>');
+            response.write('</div>');
+            response.write('</div>');
+            response.write('</div>');
         response.write('</div>');
         })
-
-  
+        response.write('<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>');
+        response.write('<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>');
+        response.write('<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>');
+        
        // response.write("hello" + JSON.stringify(steamUserInventory(user, game)));
         //console.log("console" + steamUserInventory(user, game));
         
@@ -176,7 +258,6 @@ app.get('/', function(request, response) {
     //response.send();
     //response.end("something");
 });
-
 
 //start server at port 4000
 var port = 4000;
