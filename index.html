@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Team Elastic Hackathon Blockchain Project</title>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
+  
+  <style>
+    
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set gray background color and 100% height */
+    .cell {
+      border-width:0.75px;  
+      border-style:solid;
+      border-color:darkgray;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+  
+</head>
+  
+<body>
+
+<nav class="navbar navbar-inverse" style="background-color:darkblue">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Logo</a>
+    <div class="navbar-header" style="color:white">
+      Your Bitcoin Address:<form style="color:black"><input type="text" size="32" placeholder="10101010101010101010101010101010" readonly></form>
+      <button style="color: transparent; background-color: transparent; border-color: transparent;  cursor: default;"></button>
+    </div>
+    <div class="navbar-header" id="myNavbar" style="color:white">
+      <ul class="nav navbar-nav navbar-right">
+        Enter/update your Bitcoin Address:<form style="color:black"><input size="32" type="text"></form>
+        <button style="color:black; width: 50%; ">Submit</button>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- The Modal -->
+<div class="modal fade" id="modalid">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <h3>Buy/Sell Item</h3>
+        </div>
+      <div class="modal-body col-6 mx-auto">
+      Modal test
+      </div>
+      </div>
+    </div>
+  </div>
+  
+  
+<!-- The Body of Page -->
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-6 sidenav">
+      <div class="well">
+      <p>Your Items</p>
+      </div>
+      <div class="well">
+        <p>Div holding all item divs</p>
+        <div class="row">
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>a1</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>a2</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>a3</div></a></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>b1</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>b2</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>b3</div></a></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>c1</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>c2</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>c3</div></a></div>
+        </div>
+      </div>
+        </div>
+    <div class="col-sm-6 sidenav">
+      <div class="well">
+        <p>Available Items</p>
+      </div>
+      <div class="well">
+        <p>Div holding all item divs</p>
+        <div class="row">
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>a1</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>a2</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>a3</div></a></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>b1</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>b2</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>b3</div></a></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>c1</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>c2</div></a></div>
+          <div class="col-sm-4 cell modalButton"><a href="#" data-toggle="modal" data-target="#modalid"><div>c3</div></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+src="https://code.jquery.com/jquery-3.3.1.js"
+integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
