@@ -31,7 +31,7 @@ client.on('webSession', (sessionid, cookies) => {
     community.startConfirmationChecker(10000, config.identitySecret);
 });
 
-function acceptOffer(offer) {
+acceptOffer = (offer) => {
     console.log("Offer Accepted!");
     offer.accept((err, status) => {
         if (err) {
@@ -42,7 +42,7 @@ function acceptOffer(offer) {
     });
 }
 
-function declineOffer(offer) {
+declineOffer = (offer) => {
     console.log("Offer Declined");
     offer.decline((err) => {
         if (err) {
